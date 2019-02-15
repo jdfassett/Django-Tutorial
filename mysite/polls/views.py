@@ -2,19 +2,19 @@ from django.shortcuts import render
 from django.http import Http404
 # Create your views here.
 from django.template import loader
-from django.http import HttpResponse
-from .models import Question
-from django.shortcuts import get_object_or_404, render
-
-
-
-
-
 from django.http import HttpResponse, HttpResponseRedirect
+#from .models import Question
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from .models import Choice, Question
+
+
+
+
+#from django.http import HttpResponse, HttpResponseRedirect
+#from django.shortcuts import get_object_or_404, render
+
 # ...
 
 
@@ -35,7 +35,7 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
-    template_name = 'polls/results.html'
+    #template_name = 'polls/results.html'
 	
 
 def vote(request, question_id):
@@ -71,8 +71,6 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
-def vote(request, question_id):
-    return HttpResponse("You're voting on question %s." % question_id)
 
 
 

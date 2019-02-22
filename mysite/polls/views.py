@@ -63,6 +63,8 @@ def vote(request, question_id):
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
+    if question.pub_date > timezone.now():
+        raise Http404('Question not found')
     return render(request, 'polls/index.html', context)
 
 
